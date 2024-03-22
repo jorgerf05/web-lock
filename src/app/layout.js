@@ -2,7 +2,7 @@ import { Inter, Cabin, Poppins } from "next/font/google";
 import "./globals.css";
 import Sidebar from "./components/Sidebar";
 import ProfileBar from "./components/ProfileBar";
-
+import Provider from "./Provider";
 const inter = Inter({ subsets: ["latin"] });
 const cabin = Cabin({ subsets: ["latin"] });
 const poppins = Poppins({
@@ -19,9 +19,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${poppins.className} flex flex-row bg-white`}>
-        <Sidebar></Sidebar>
-        {children}
-        <ProfileBar></ProfileBar>
+        <Provider>
+          <Sidebar></Sidebar>
+          {children}
+          <ProfileBar></ProfileBar>
+        </Provider>
       </body>
     </html>
   );

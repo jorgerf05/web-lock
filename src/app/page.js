@@ -52,15 +52,29 @@ export default function Home() {
           colors={mangoFusionPalette}
         />
         </div>*/}
-      <div>
-        <p className="font-semibold text-gray-600">Log In</p>
-        <button
-          className="font-semibold text-gray-700 rounded bg-sky-600 px-3 py-2"
-          onClick={() => signIn()}
-        >
-          Sign in with Google
-        </button>
-      </div>
+      {session?.user ? (
+        <div>
+          <p className="font-semibold text-gray-600">
+            Hola, {session.user.name}
+          </p>
+          <button
+            className="font-semibold text-gray-700 rounded bg-sky-600 px-3 py-2"
+            onClick={() => signOut()}
+          >
+            Log Out
+          </button>
+        </div>
+      ) : (
+        <div>
+          <p className="font-semibold text-gray-600">Log In</p>
+          <button
+            className="font-semibold text-gray-700 rounded bg-sky-600 px-3 py-2"
+            onClick={() => signIn()}
+          >
+            Sign in with Google
+          </button>
+        </div>
+      )}
     </main>
   );
 }
